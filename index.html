@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">hh
+
+<title>Student Assistant</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #222;
+}
+
+header {
+    background: #173b82;
+    color: white;
+    padding: 25px 15px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+header p {
+    margin: 8px 0 0;
+}
+
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 15px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.10);
+}
+
+h2 {
+    text-align: center;
+}
+
+select {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 12px;
+    background: #173b82;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0f2b63;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.feature {
+    padding: 20px;
+    background: #eef3ff;
+    border-radius: 10px;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🎓 Student Assistant</h1>
+    <p>Learn Smart • Prepare Better • Score Better</p>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h2>Select Your Class</h2>
+
+        <select id="level">
+            <option value="">-- Select Class --</option>
+
+            <option value="class10">Class 10</option>
+            <option value="class11">Class 11</option>
+            <option value="class12">Class 12</option>
+
+            <option value="btech1">B.Tech CSE - 1st Semester</option>
+            <option value="btech2">B.Tech CSE - 2nd Semester</option>
+            <option value="btech3">B.Tech CSE - 3rd Semester</option>
+            <option value="btech4">B.Tech CSE - 4th Semester</option>
+            <option value="btech5">B.Tech CSE - 5th Semester</option>
+            <option value="btech6">B.Tech CSE - 6th Semester</option>
+            <option value="btech7">B.Tech CSE - 7th Semester</option>
+            <option value="btech8">B.Tech CSE - 8th Semester</option>
+        </select>
+
+        <button onclick="openLevel()">Continue</button>
+    </div>
+
+    <div class="card"id="mainCard">
+        <h2>📚 What You Can Find</h2>
+
+        <div class="features">
+
+            <div class="feature">
+                📖<br>
+                <b>Syllabus</b>
+            </div>
+
+            <div class="feature">
+                ⭐<br>
+                <b>Important Questions</b>
+            </div>
+
+            <div class="feature">
+                📝<br>
+                <b>Notes</b>
+            </div>
+
+            <div class="feature">
+                🧮<br>
+                <b>Calculator</b>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    © 2026 Student Assistant
+</footer>
+
+<script>
+
+function openLevel() {
+
+    let level = document.getElementById("level").value;
+
+    if (level === "") {
+        alert("Please select your class.");
+        return;
+    }
+
+    if (level === "class10") {
+
+        document.getElementById("mainCard").innerHTML = `
+            <h2>📚 Class 10 Subjects</h2>
+
+            <button onclick="showSubject('Mathematics')">
+                ➗ Mathematics
+            </button>
+
+            <button onclick="showSubject('Science')">
+                🔬 Science
+            </button>
+
+            <button onclick="showSubject('English')">
+                📖 English
+            </button>
+
+            <button onclick="showSubject('Social Science')">
+                🌍 Social Science
+            </button>
+
+            <button onclick="showSubject('Assamese')">
+                📝 Assamese
+            </button>
+
+            <button onclick="location.reload()">
+                ⬅️ Back
+            </button>
+        `;
+
+    } else {
+
+        document.getElementById("mainCard").innerHTML = `
+            <h2>📚 Selected Class</h2>
+            <p>Study materials will be added soon.</p>
+            <button onclick="location.reload()">⬅️ Back</button>
+        `;
+    }
+}
+
+function showSubject(subject) {
+
+    document.getElementById("mainCard").innerHTML = `
+        <h2>📖 ${subject}</h2>
+
+        <button onclick="showSyllabus('${subject}')">
+            📚 Syllabus
+        </button>
+
+        <button>⭐ Important Questions</button>
+
+        <button>📝 Notes</button>
+
+        <button onclick="location.reload()">
+            ⬅️ Back
+        </button>
+    `;
+}
+
+function showSyllabus(subject) {
+
+    if (subject === "English") {
+
+        document.getElementById("mainCard").innerHTML = `
+            <h2>📚 English Syllabus</h2>
+
+            <img src="english syllabus.jpg"
+     style="width:100%; max-width:800px; display:block; margin:auto;">
+
+            <button onclick="showSubject('English')">
+                ⬅️ Back
+            </button>
+        `;
+
+    } else {
+        alert("Syllabus will be added soon.");
+    }
+}
+
+</script>
+<footer>
+    <h3>🎓 Student Assistant</h3>
+    <p>Created by <b>Monirul Islam</b></p>
+    <p>© 2026 Student Assistant</p>
+</footer>
+
+function showSyllabus(subject) {
+    if (subject === "English") {
+        document.getElementById("mainCard").innerHTML = `
+            <h2>English Syllabus</h2>
+            <img src="english-syllabus.jpg."
+                 style="width:100%; max-width:800px; display:block; margin:auto;">
+            <br>
+            <button onclick="showSubject('English')">← Back</button>
+        `;
+    } else {
+        alert("Syllabus will be added soon.");
+    }
+}
+
+
+
+
+</body>
+</html>
